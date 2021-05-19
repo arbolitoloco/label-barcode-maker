@@ -1,0 +1,29 @@
+/* ----------------------------------------
+* Label/Barcode Sheet Maker
+* Specific Barcode Styles
+* Author: Laura Rocha Prado
+* Version: May 2021
+*-----------------------------------------*/
+
+/* Variables */
+
+/* Content */
+label,
+textarea {
+  display: block;
+  width: 90%;
+}
+
+table {
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+#options-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#sheet-area {
+  border: solid 1px gray;
+}

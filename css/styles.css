@@ -1,0 +1,44 @@
+/* ----------------------------------------
+* Label/Barcode Sheet Maker
+* General styles
+* Author: Laura Rocha Prado
+* Version: May 2021
+*-----------------------------------------*/
+
+/* Variables */
+:root {
+  --main-max-size: 940px;
+}
+
+/* Typography */
+h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  max-width: var(--main-max-size);
+  margin: 0 auto;
+  padding: 1em;
+}
+
+/* Content  */
+html {
+  color: #212529;
+}
+
+body {
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+}
+
+main {
+  display: grid;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: var(--main-max-size)) {
+  main {
+    grid-template-columns: 100%;
+  }
+}

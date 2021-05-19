@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="" />
+
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/helpers.css" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <meta name="theme-color" content="#fafafa" />
+</head>
+
+<body>
+  <main>
+    <!-- Add your site or application content here -->
+    <h1>Label Maker</h1>
+    <section style="background-color: aquamarine">
+      <h2>File options</h2>
+      <div>
+        <label for="csv-file">Open CSV</label>
+        <input type="file" id="csv-file" name="csv-file" accept=".csv" />
+      </div>
+    </section>
+    <section style="background-color: burlywood">
+      <h2>Label Page Options</h2>
+      <div>
+        <label for="num-cols">Number of Columns</label>
+        <input type="number" id="num-cols" name="num-cols" min="1" />
+      </div>
+    </section>
+
+    <section id="label-options" style="background-color: bisque">
+      <div>
+        <div id="fields">
+          <h2>File headers</h2>
+          <div id="fields-list" class="container"></div>
+        </div>
+      </div>
+      <div>
+        <div id="build">
+          <div id="build-label">
+            <h4 style="color: #212529">Label Content Area</h4>
+            <h5>
+              drag, drop & reorder fields here; click to select fields or lines to apply formats (only one item formattable at a time); reorder lines clicking on arrows; remove lines/fields clicking on "x"
+            </h5>
+            <div id="label-middle">
+              <div class="field-block container" data-delimiter=" ">
+                <span class="material-icons">close</span
+                  ><span class="material-icons">keyboard_arrow_up</span
+                  ><span class="material-icons">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <button class="btn" onClick="addLine()">Add line</button>
+          </div>
+        </div>
+        <div id="preview">
+          <h4>Label preview</h4>
+          <h5>content automatically displayed below</h5>
+          <div id="preview-label"></div>
+        </div>
+      </div>
+      <div>
+        <div id="controls">
+          <div id="field-options">
+            <h4>Field Options</h4>
+            <div>
+              <div>
+                <label for="prefix">Prefix:</label>
+                <input type="text" name="prefix" id="prefix" class="control" disabled="true" data-group="field" />
+              </div>
+              <div>
+                <label for="suffix">Suffix:</label>
+                <input type="text" name="suffix" id="suffix" class="control" disabled="true" data-group="field" />
+              </div>
+              <div id="field-options-btns"></div>
+            </div>
+          </div>
+          <div id="field-block-options">
+            <h4>Line Options</h4>
+            <div>
+              <label for="delimiter">Fields Delimiter:</label>
+              <input type="text" name="delimiter" id="delimiter" class="control" disabled="true" data-group="field-block" />
+            </div>
+            <div id="field-block-options-btns"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <button id="gen-btn">Generate labels</button>
+      <div id="modal" style="background-color: gray; padding: 20px">
+        <div id="labels" style="
+              display: grid;
+              background-color: white;
+              max-width: 1280px;
+              margin: 0 auto;
+            "></div>
+      </div>
+    </section>
+  </main>
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/papaparse.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function() {
+      ga.q.push(arguments);
+    };
+    ga.q = [];
+    ga.l = +new Date();
+    ga("create", "UA-XXXXX-Y", "auto");
+    ga("set", "anonymizeIp", true);
+    ga("set", "transport", "beacon");
+    ga("send", "pageview");
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>
