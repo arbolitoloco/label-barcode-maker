@@ -50,24 +50,97 @@
             cols="60"
             rows="10"
           ></textarea>
-          <button id="generate-btn">Generate Sheets</button>
-          <button id="print-btn">Print Sheets</button>
+          <button id="generate-btn">Generate Labels</button>
+          <button id="print-btn" class="hidden">Print Sheets</button>
         </div>
+        <!-- Label Options -->
         <div>
-          <h2>Barcode Options</h2>
-          <label for="size">Barcode Width</label>
-          <input
-            name="size"
-            id="size"
-            type="number"
-            min="1"
-            max="960"
-            value="30"
-          />
-          <select name="unit" id="unit">
-            <option value="mm" selected>mm</option>
-            <option value="px">px</option>
-          </select>
+          <div>
+            <h2>Page Options</h2>
+            <label for="ps">Page Size</label>
+            <select name="ps" id="ps">
+              <option value="a4" selected>A4</option>
+              <option value="letter">letter</option>
+              <option value="card">standard card (4''x6'')</option>
+            </select>
+            <label for="border">Show label border</label>
+            <input type="checkbox" name="border" id="border" checked />
+            <label for="spaceEven">Space labels evenly</label>
+            <input type="checkbox" name="spaceEven" id="spaceEven" checked />
+          </div>
+          <div>
+            <h2>Label Options</h2>
+            <label for="lw">Label Width</label>
+            <input
+              name="lw"
+              id="lw"
+              type="number"
+              min="1"
+              max="960"
+              value="16"
+            />
+            <select name="lunit" id="lunit">
+              <option value="mm" selected>mm</option>
+              <option value="px">px</option>
+            </select>
+            <label for="lh">Label Height</label>
+            <input
+              name="lh"
+              id="lh"
+              type="number"
+              min="1"
+              max="960"
+              value="10"
+            />
+            <select name="lhunit" id="lhunit">
+              <option value="mm" selected>mm</option>
+              <option value="px">px</option>
+            </select>
+            <label for="ls">Label Spacing</label>
+            <input
+              name="ls"
+              id="ls"
+              type="number"
+              min="0"
+              step=".1"
+              max="960"
+              value="0.5"
+            />
+            <select name="lsunit" id="lsunit">
+              <option value="mm" selected>mm</option>
+              <option value="px">px</option>
+            </select>
+            <label for="border">Show label border</label>
+            <input type="checkbox" name="border" id="border" checked />
+          </div>
+          <div>
+            <h2>Identifier text Options</h2>
+            <label for="ifs">Identifier Font-Size (pt)</label>
+            <input
+              name="ifs"
+              id="ifs"
+              type="number"
+              min="1"
+              max="96"
+              value="5"
+            />
+          </div>
+          <div>
+            <h2>Barcode Options</h2>
+            <label for="bcw">Barcode Width</label>
+            <input
+              name="bcw"
+              id="bcw"
+              type="number"
+              min="1"
+              max="960"
+              value="8"
+            />
+            <select name="bcunit" id="bcunit">
+              <option value="mm" selected>mm</option>
+              <option value="px">px</option>
+            </select>
+          </div>
         </div>
       </section>
       <section>

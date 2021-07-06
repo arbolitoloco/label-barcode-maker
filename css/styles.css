@@ -42,3 +42,66 @@ main {
     grid-template-columns: 100%;
   }
 }
+
+.label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.a4 {
+  min-height: 29.7cm;
+  max-width: 21cm;
+}
+
+.letter {
+  min-height: 11in;
+  max-width: 8.5in;
+}
+
+.card {
+  min-height: 4in;
+  max-width: 6in;
+}
+
+@media print {
+  h1 {
+    display: none !important;
+  }
+  #options-area {
+    display: none !important;
+  }
+  #sheet-area {
+    border: none !important;
+  }
+  .a4 {
+    height: 29.7cm;
+    width: 21cm;
+    margin: 0mm;
+  }
+
+  .letter {
+    height: 11in;
+    width: 8.5in;
+    margin: 0mm;
+  }
+
+  .card {
+    height: 4in;
+    width: 6in;
+    margin: 0mm;
+  }
+}
+
+#sheet-area {
+  background-color: lightslategray;
+  margin: 0 auto;
+}
+
+.page {
+  background-color: white;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: flex-start;
+}
