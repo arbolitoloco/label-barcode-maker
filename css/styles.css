@@ -37,30 +37,55 @@ main {
   margin: 0 auto;
 }
 
+#sheet-area {
+  background-color: lightslategray;
+  margin: 0 auto;
+}
+
+.page {
+  background-color: white;
+  /* margin: 5mm 5mm 10mm 5mm; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: flex-start;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.label span {
+  padding-left: 1pt;
+}
+
 @media only screen and (max-width: var(--main-max-size)) {
   main {
     grid-template-columns: 100%;
   }
 }
 
-.label {
-  display: flex;
-  justify-content: space-between;
+.page {
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 .a4 {
   min-height: 29.7cm;
-  max-width: 21cm;
+  width: 21cm;
 }
 
 .letter {
   min-height: 11in;
-  max-width: 8.5in;
+  width: 8.5in;
 }
 
 .card {
   min-height: 4in;
-  max-width: 6in;
+  width: 6in;
 }
 
 @media print {
@@ -97,19 +122,4 @@ main {
     width: 6in;
     margin: 0in;
   }
-}
-
-#sheet-area {
-  background-color: lightslategray;
-  margin: 0 auto;
-}
-
-.page {
-  background-color: white;
-  /* margin: 0 auto; */
-  margin: 5mm 5mm 10mm 5mm;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-content: flex-start;
 }
