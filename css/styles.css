@@ -64,6 +64,10 @@ main {
 }
 
 @media print {
+  body {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
   h1 {
     display: none !important;
   }
@@ -72,6 +76,8 @@ main {
   }
   #sheet-area {
     border: none !important;
+  }
+  .page {
   }
   .a4 {
     height: 29.7cm;
@@ -82,13 +88,13 @@ main {
   .letter {
     height: 11in;
     width: 8.5in;
-    margin: 0mm;
+    margin: 0in;
   }
 
   .card {
     height: 4in;
     width: 6in;
-    margin: 0mm;
+    margin: 0in;
   }
 }
 
