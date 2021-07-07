@@ -78,6 +78,7 @@ main {
     border: none !important;
   }
   .page {
+    margin: 5mm 5mm 10mm 5mm;
   }
   .a4 {
     height: 29.7cm;
@@ -105,7 +106,8 @@ main {
 
 .page {
   background-color: white;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin: 5mm 5mm 10mm 5mm;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
