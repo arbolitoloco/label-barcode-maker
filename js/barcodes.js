@@ -113,23 +113,26 @@ function generateLabels(idArr) {
     ? (labelPage.style.justifyContent = "space-evenly")
     : (labelPage.style.justifyContent = "normal");
   idArr.forEach((item) => {
-    let label = document.createElement("div");
-    label.classList.add("label");
-    label.style.width = lbOptions.lw;
-    label.style.height = lbOptions.lh;
-    label.style.margin = lbOptions.ls;
-    label.style.border = lbOptions.border;
-    let labelText = document.createElement("span");
-    labelText.style.width = lbOptions.lw - lbOptions.bcw;
-    labelText.style.fontSize = lbOptions.txts + "pt";
-    let barcode = document.createElement("img");
-    barcode.src = `https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=${item}`;
-    barcode.style.width = lbOptions.bcw;
-    barcode.style.height = lbOptions.bcw;
-    labelText.innerText = item;
-    label.appendChild(labelText);
-    label.appendChild(barcode);
-    labelPage.appendChild(label);
+    item = item.trim();
+    if (item !== "") {
+      let label = document.createElement("div");
+      label.classList.add("label");
+      label.style.width = lbOptions.lw;
+      label.style.height = lbOptions.lh;
+      label.style.margin = lbOptions.ls;
+      label.style.border = lbOptions.border;
+      let labelText = document.createElement("span");
+      labelText.style.width = lbOptions.lw - lbOptions.bcw;
+      labelText.style.fontSize = lbOptions.txts + "pt";
+      let barcode = document.createElement("img");
+      barcode.src = `https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=${item}`;
+      barcode.style.width = lbOptions.bcw;
+      barcode.style.height = lbOptions.bcw;
+      labelText.innerText = item;
+      label.appendChild(labelText);
+      label.appendChild(barcode);
+      labelPage.appendChild(label);
+    }
   });
   sheetArea.appendChild(labelPage);
   sheetArea.style.border = "solid 1px gray";
