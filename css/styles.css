@@ -40,6 +40,7 @@ main {
 #sheet-area {
   background-color: lightslategray;
   margin: 0 auto;
+  overflow-y: scroll;
 }
 
 .page {
@@ -69,12 +70,14 @@ main {
 }
 
 .page {
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin: 20px auto 30px auto;
   max-width: 100%;
 }
 
 .a4 {
   min-height: 29.7cm;
+  max-height: 29.7cm;
   width: 21cm;
 }
 
@@ -91,7 +94,7 @@ main {
 @media print {
   body {
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0 auto;
   }
   h1 {
     display: none !important;

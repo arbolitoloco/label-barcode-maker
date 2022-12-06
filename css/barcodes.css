@@ -19,7 +19,14 @@ table {
   padding: 1rem;
 }
 
+main {
+  display: grid;
+  max-width: 1280px;
+  margin: 0 auto;
+  grid-template-columns: 1fr 2fr;
+}
+
 #options-area {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
 }

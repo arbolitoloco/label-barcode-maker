@@ -7,9 +7,13 @@
  * [x] Add width option
  * [] Add other label types via https://barcode.tec-it.com/en/QRCode?data=This%20is%20a%20QR%20Code%20by%20TEC-IT (add backlink) 128, 11, 39
  * [x] Don't clean barcode for spaces
- * [] Add selector for size of sheet
- * [] Add selector for size of label
- * [] Add checkbox for margin
+ * [x] Add selector for size of sheet
+ * [x] Add selector for size of label
+ * [x] Add checkbox for margin
+ * [x] Add selector for label spacing
+ * [x] Add selector for font size
+ * [x] Add selector for border
+ * [x] Calculate sheets needed for labels
  */
 
 // Global variables
@@ -33,10 +37,18 @@ function setIdsArr(idsText) {
     sheetArea.innerHTML = "";
     sheetArea.style.border = "none";
     return (ids = false);
+  } else if (idsText.includes(",")) {
+    ids = idsText.split(",");
+  } else if (idsText.includes("\n")) {
+    ids = idsText.split("\n");
   } else {
-    idsText.includes(",") ? (ids = idsText.split(",")) : ids.push(idsText);
-    return ids;
+    ids.push(idsText);
   }
+  return ids;
+  // else {
+  //   idsText.includes(",") ? (ids = idsText.split(",")) : ids.push(idsText);
+  //   return ids;
+  // }
 }
 
 function cleanIds(idsText) {
@@ -101,7 +113,7 @@ function displayIds(idArr) {
 }
 
 function generateLabels(idArr) {
-  console.log(idArr.length);
+  // console.log(idArr.length);
   sheetArea.innerHTML = "";
   generateBtn.innerText = "Refresh Labels";
   printBtn.classList.remove("hidden");
@@ -109,9 +121,42 @@ function generateLabels(idArr) {
   let labelPage = document.createElement("div");
   labelPage.classList.add("page");
   labelPage.classList.add(lbOptions.ps);
+  let invisiblePage = document.getElementById("page-invisible");
+  invisiblePage.classList.add("page");
+  invisiblePage.classList.add(lbOptions.ps);
   lbOptions.spaceEvenly
     ? (labelPage.style.justifyContent = "space-evenly")
     : (labelPage.style.justifyContent = "normal");
+  // calculate total height of labelPage to determine if page break is needed
+  let labelHeight = parseInt(lbOptions.lh);
+  let labelSpacing = parseInt(lbOptions.ls);
+  let labelCount = idArr.length;
+  // calculate max page height based on page size option and css class
+  let maxPageHeight = getComputedStyle(invisiblePage).height;
+  let totalLabelHeight =
+    labelHeight * labelCount + labelSpacing * (labelCount - 1);
+  console.log(
+    "totalLabelHeight: " + totalLabelHeight,
+    "maxPageHeight: " + maxPageHeight
+  );
+
+  // calculate how many labels can be added per page
+  let labelsPerPage = Math.floor(
+    (parseInt(maxPageHeight) - labelSpacing) / (labelHeight + labelSpacing)
+  );
+  console.log("labelsPerPage: " + labelsPerPage);
+  console.log("actual label count: " + labelCount);
+
+  const identifiersAdded = document.getElementById("identifiers-added");
+  identifiersAdded.innerText = `${labelCount} label(s) will be generated.`;
+
+  // calculate how many pages are needed
+  let pageCount = Math.ceil(labelCount / labelsPerPage);
+  console.log("pageCount: " + pageCount);
+
+  const pagesCalculated = document.getElementById("pages-calculated");
+  pagesCalculated.innerText = `Based on options selected, ${pageCount} page(s) will be generated (max ${labelsPerPage} label(s) per page).`;
+
   idArr.forEach((item) => {
     item = item.trim();
     if (item !== "") {
@@ -156,3 +201,14 @@ printBtn.addEventListener("click", function (e) {
   e.preventDefault();
   printLabels();
 });
+
+// function to set example ids and preview labels
+function setExampleIds() {
+  let exampleStr =
+    "A000001,A000002,A000003,A000004,A000005,A000006,A000007,A000008,A000009,A000010,A000011,A000012,A000013,A000014,A000015,A000016,A000017,A000018,A000019,A000020";
+  textArea.value = exampleStr;
+  readIds();
+  generateLabels(setIdsArr(idText));
+}
+
+setExampleIds();
